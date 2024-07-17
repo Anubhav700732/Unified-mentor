@@ -1,0 +1,93 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<title> JavaScript Calculator </title>  
+<style>  
+h1 {  
+    text-align: center;  
+    padding: 23px;  
+    background-color: skyblue;  
+    color: white;  
+    }  
+#clear{  
+width: 100px;  
+border: 3px solid gray;  
+    border-radius: 3px;  
+    padding: 15px;  
+    background-color: red;  
+}  
+.formstyle  
+{  
+width: 300px;  
+height: 530px;  
+margin: auto;  
+border: 3px solid skyblue;  
+border-radius: 5px;  
+padding: 20px;  
+}  
+input  
+{  
+width: 20px;  
+background-color: red;  
+color: white;  
+border: 3px solid gray;  
+    border-radius: 5px;  
+    padding: 26px;  
+    margin: 5px;  
+    font-size: 15px;  
+}  
+#calc{  
+width: 250px;  
+border: 5px solid black;  
+    border-radius: 3px;  
+    padding: 20px;  
+    margin: auto;  
+}  
+</style>  
+</head>  
+<body>  
+<h1> Calculator Program in JavaScript </h1>  
+<div class= "formstyle">  
+<form name = "form1">  
+  <input id = "calc" type ="text" name = "answer" value=""><br> <br>    
+  <input type = "button" value = "1" id="a"onClick = "num(1);">  
+  <input type = "button" value = "2" id="b"onclick = "  num(2);  ">  
+  <input type = "button" value = "3" id="c"onclick = "  num(3);  ">  
+   <input type = "button" value = "+" id="d"onclick = " op('+'); ">  
+  <br> <br>  
+  <input type = "button" value = "4" id="e"onclick = " num(4);  ">  
+  <input type = "button" value = "5" id="f"onclick = " num(5);   ">  
+  <input type = "button" value = "6" id="g"onclick = " num(6);   ">  
+  <input type = "button" value = "-" id="h"onclick = "op('-'); ">  
+  <br> <br>    
+  <input type = "button" value = "7"id="i" onclick = " num(7); ">  
+  <input type = "button" value = "8" id="j"onclick = " num(8);   ">  
+  <input type = "button" value = "9"id="k" onclick = " num(9);  ">  
+  <input type = "button" value = "*"id="l" onclick = " op('*'); ">  
+  <br> <br>    
+  <input type = "button" value = "/"id="m" onclick = " num('/');  ">  
+  <input type = "button" value = "0"id="n" onclick = "  num(0); ">  
+  <input type = "button" value = "." id="o"onclick = " op('.');  ">    
+  <input type = "button" value = "=" id="p"onclick = "res();">  
+  <br>   
+  <center><input type = "reset" value = "C"  id= "clear" >  
+  <br></center> 
+</form>  
+</div>  
+<script>
+function num(a){
+    var c=document.getElementById("calc").value+=a;
+  
+}
+function op(v){
+    var c=document.getElementById("calc").value+=v;
+}
+function res()
+{
+    var an=document.getElementById("calc").value;
+    
+    document.getElementById("calc").value=eval(an);
+}
+</script>
+</body> 
+</htmpclear>

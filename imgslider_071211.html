@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Image Slider</title>
+    <style>
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Adjusted maximum width */
+            height: 300px; /* Adjusted height */
+            margin: auto;
+            overflow: hidden;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .slide img {
+            width: 50%;
+            height: 100%; /* Ensure the image covers the slider height */
+            object-fit: cover; /* Ensure the image covers the container */
+            display: block;
+        }
+        .navigation {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .nav-button {
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slider">
+    <div class="slides">
+        <div class="slide"><img src="image1.jpg" alt="Image 1"></div>
+        <div class="slide"><img src="image2.jpg" alt="Image 2"></div>
+        <div class="slide"><img src="image3.jpg" alt="Image 3"></div>
+        <!-- Add more slides as needed -->
+    </div>
+    <div class="navigation">
+        <button class="nav-button" id="prev">&lt;</button>
+        <button class="nav-button" id="next">&gt;</button>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelector('.slides');
+    const slideCount = document.querySelectorAll('.slide').length;
+    let currentIndex = 0;
+    const slideInterval = 3000; // Interval in milliseconds
+
+    document.getElementById('next').addEventListener('click', function() {
+        nextSlide();
+    });
+
+    document.getElementById('prev').addEventListener('click', function() {
+        prevSlide();
+    });
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateSlidePosition();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+        updateSlidePosition();
+    }
+
+    function updateSlidePosition() {
+        const slideWidth = document.querySelector('.slide').clientWidth;
+        slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    }
+
+    setInterval(nextSlide, slideInterval);
+
+    window.addEventListener('resize', updateSlidePosition);
+});
+</script>
+
+</body>
+</html>
